@@ -33,3 +33,4 @@ C:\Users\dougl\OneDrive\Área de Trabalho\projeto integrador uninove\projeto_fin
 C:\Users\dougl\OneDrive\Área de Trabalho\projeto integrador uninove\projeto_final\projetoIntegrador\obj\Debug\net6.0\projetoIntegrador.pdb
 C:\Users\dougl\OneDrive\Área de Trabalho\projeto integrador uninove\projeto_final\projetoIntegrador\obj\Debug\net6.0\projetoIntegrador.genruntimeconfig.cache
 C:\Users\dougl\OneDrive\Área de Trabalho\projeto integrador uninove\projeto_final\projetoIntegrador\obj\Debug\net6.0\ref\projetoIntegrador.dll
+C:\Users\dougl\OneDrive\Área de Trabalho\projeto integrador uninove\projeto_final\projetoIntegrador\bin\Debug\net6.0\Newtonsoft.Json.dll

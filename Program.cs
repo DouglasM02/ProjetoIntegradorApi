@@ -1,5 +1,11 @@
 using Microsoft.EntityFrameworkCore;
 using projetoIntegrador.Database;
+using projetoIntegrador.Interfaces.Repositories;
+using projetoIntegrador.Interfaces.Services;
+using projetoIntegrador.Repositories;
+using projetoIntegrador.Services;
+using System.Text.Json.Serialization;
+using Newtonsoft.Json.Serialization;
 
 namespace projetoIntegrador
 {
@@ -9,10 +15,17 @@ namespace projetoIntegrador
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddControllers().AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
             // Add services to the container.
             //Db connection
             var connection = builder.Configuration.GetConnectionString("Default");
-            builder.Services.AddDbContext<Context>(o => o.UseNpgsql(connection));
+            builder.Services.AddDbContext<Context>(option => option.UseNpgsql(connection));
+
+            //INTERFACE e REPOSITORY
+            builder.Services.AddScoped<IAlunoRepository, AlunoRepository>();
+
+            //INTERFACE e SERVICE
+            builder.Services.AddScoped<IAlunoService, AlunoService>();
 
 
             builder.Services.AddControllers();

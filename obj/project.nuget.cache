@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "BBGsdBQJ9PVQtq6Fyzy6WyW4j0ErKOtFkEjYKVu4AJJvkGbjhafg2oShslOT2maQpPeDuzqIsHg0JdNeUn6dVA==",
+  "dgSpecHash": "FLmOe/uJTy3iRmwwnNH8lgLQ2m7ykCkhFCuO4LCiF/wu4vgO1wI37vXM4OyoRYe9Sgy2WGzC6+AY54mlnEb9XA==",
   "success": true,
   "projectFilePath": "C:\\Users\\dougl\\OneDrive\\Área de Trabalho\\projeto integrador uninove\\projeto_final\\projetoIntegrador\\projetoIntegrador.csproj",
   "expectedPackageFiles": [
@@ -22,6 +22,7 @@
     "C:\\Users\\dougl\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
     "C:\\Users\\dougl\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
     "C:\\Users\\dougl\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\dougl\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\dougl\\.nuget\\packages\\npgsql\\6.0.7\\npgsql.6.0.7.nupkg.sha512",
     "C:\\Users\\dougl\\.nuget\\packages\\npgsql.entityframeworkcore.postgresql\\6.0.7\\npgsql.entityframeworkcore.postgresql.6.0.7.nupkg.sha512",
     "C:\\Users\\dougl\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
