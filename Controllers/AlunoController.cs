@@ -31,5 +31,23 @@ namespace projetoIntegrador.Controllers
             }
         }
 
+        [HttpDelete("Delete/{id}")]
+        public async Task<IActionResult> Delete(int id)
+        {
+            try
+            {
+                var response = await _service.Delete(id);
+                if (response)
+                {
+                    return Ok("Aluno deletado com sucesso");
+                }
+                return NotFound("Aluno não encontrado");
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
     }
 }
