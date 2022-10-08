@@ -49,5 +49,39 @@ namespace projetoIntegrador.Controllers
             }
         }
 
+        [HttpGet("GetAll")]
+        public async Task<IActionResult> GetAll()
+        {
+            try
+            {
+                var Alunos = await _service.GetAll();
+                return Ok(Alunos);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
+        [HttpGet("GetById/{id}")]
+        public async Task<IActionResult> GetById(int id)
+        {
+            try
+            {
+                var Aluno = await _service.GetById(id);
+
+                if(Aluno == null)
+                {
+                    return NotFound("Aluno não econtrado");
+                }
+
+                return Ok(Aluno);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
     }
 }

@@ -18,7 +18,7 @@ namespace projetoIntegrador.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Nome = table.Column<string>(type: "text", nullable: false),
                     CPF = table.Column<string>(type: "text", nullable: false),
-                    DataNascimento = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
+                    DataNascimento = table.Column<DateTime>(type: "date", nullable: false)
                 },
                 constraints: table =>
                 {
