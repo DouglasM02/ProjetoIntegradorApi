@@ -17,58 +17,68 @@ namespace projetoIntegrador.Repositories
 
         public async Task<Aluno> Create(Aluno aluno)
         {
-            using(var Data = _builder)
+            try
             {
-                await Data.Set<Aluno>().AddAsync(aluno);
-                await Data.SaveChangesAsync();
+                await _builder.Set<Aluno>().AddAsync(aluno);
+                await _builder.SaveChangesAsync();
                 return aluno;
+
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
 
         public async Task<bool> Delete(int id)
         {
-            using(var Data = _builder)
+            try
             {
-                var Aluno = await Data.Set<Aluno>().FindAsync(id);
+
+                var Aluno = await _builder.Set<Aluno>().FindAsync(id);
                 if(Aluno == null)
                 {
                     return false;
                 }
-                Data.Set<Aluno>().Remove(Aluno);
-                await Data.SaveChangesAsync();
+                _builder.Set<Aluno>().Remove(Aluno);
+                await _builder.SaveChangesAsync();
                 return true;
+            }
+            catch (Exception e)
+            {
+                throw e;
             }
         }
 
         public async Task<List<Aluno>> GetAll()
         {
-            using(var Data = _builder)
-            {
-                return await Data.Set<Aluno>().ToListAsync();
-            }
+                return await _builder.Set<Aluno>().ToListAsync();
         }
 
         public async Task<Aluno?> GetById(int id)
         {
-            using (var Data = _builder)
-            {
-                var Aluno = await Data.Set<Aluno>().FindAsync(id);
+                var Aluno = await _builder.Set<Aluno>().FindAsync(id);
                 if (Aluno == null)
                 {
                     return null;
                 }
                 return Aluno;
-            }
         }
 
         public async Task<Aluno> Update(Aluno aluno)
         {
-            using(var Data = _builder)
+            try
             {
-                Data.Set<Aluno>().Update(aluno);
-                await Data.SaveChangesAsync();
+                _builder.Set<Aluno>().Update(aluno);
+                await _builder.SaveChangesAsync();
                 return aluno;
             }
+            catch (Exception e)
+            {
+                throw e;
+            }
+                
+
         }
 
 

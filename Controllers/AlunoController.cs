@@ -83,5 +83,25 @@ namespace projetoIntegrador.Controllers
             }
         }
 
+        [HttpPut("Update")]
+        public async Task<IActionResult> Update(AlunoUpdateModel model)
+        {
+            try
+            {
+                var Aluno = await _service.Update(model);
+                if(Aluno == null)
+                {
+                    return NotFound("Aluno não encontrado");
+                }
+
+                return Ok(Aluno);
+
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
     }
 }

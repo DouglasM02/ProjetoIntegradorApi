@@ -70,7 +70,7 @@ namespace projetoIntegrador.Services
             Aluno.Id = aluno.Id;
             Aluno.Nome = aluno.Nome;
             Aluno.CPF = aluno.CPF;
-            Aluno.DataNascimento = aluno.DataNascimento;
+            Aluno.DataNascimento = aluno.DataNascimento.ToUniversalTime();
             var alun = await _repository.Update(Aluno);
             return alun;
         }
