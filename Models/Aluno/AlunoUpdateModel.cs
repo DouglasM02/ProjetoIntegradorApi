@@ -1,7 +1,8 @@
-﻿namespace projetoIntegrador.Models
+﻿namespace projetoIntegrador.Models.Aluno
 {
-    public class AlunoModel
+    public class AlunoUpdateModel
     {
+        public int Id { get; set; }
         public string Nome { get; set; }
         public string CPF { get; set; }
         public DateTime DataNascimento { get; set; }
