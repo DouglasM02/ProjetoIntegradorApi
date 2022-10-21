@@ -1,7 +1,6 @@
 ﻿using projetoIntegrador.Entities;
 using projetoIntegrador.Interfaces.Repositories;
 using projetoIntegrador.Interfaces.Services;
-using projetoIntegrador.Models;
 using projetoIntegrador.Models.Aluno;
 
 namespace projetoIntegrador.Services

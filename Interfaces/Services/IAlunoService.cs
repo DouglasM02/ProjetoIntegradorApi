@@ -1,5 +1,5 @@
 ﻿using projetoIntegrador.Entities;
-using projetoIntegrador.Models;
+using projetoIntegrador.Models.Aluno;
 
 namespace projetoIntegrador.Interfaces.Services
 {

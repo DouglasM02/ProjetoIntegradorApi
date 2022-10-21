@@ -2,30 +2,32 @@
 using projetoIntegrador.Database;
 using projetoIntegrador.Interfaces.Services;
 using projetoIntegrador.Models.Aluno;
+using projetoIntegrador.Models.Professor;
 
 namespace projetoIntegrador.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AlunoController: ControllerBase
+    public class ProfessorController: ControllerBase
     {
-        private readonly IAlunoService _service;
+        private readonly IProfessorService _service;
         private readonly Context _context;
-        public AlunoController(IAlunoService service, Context context)
+
+        public ProfessorController(IProfessorService service, Context context)
         {
             _context = context;
             _service = service;
         }
 
         [HttpPost("Create")]
-        public  async Task<IActionResult> Create(AlunoModel model)
+        public async Task<IActionResult> Create(ProfessorModel model)
         {
             try
             {
-                var Aluno = await  _service.Create(model);
-                return Ok(Aluno);
+                var Professor = await _service.Create(model);
+                return Ok(Professor);
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 return BadRequest(e.Message);
             }
@@ -39,9 +41,9 @@ namespace projetoIntegrador.Controllers
                 var response = await _service.Delete(id);
                 if (response)
                 {
-                    return Ok("Aluno deletado com sucesso");
+                    return Ok("Professor deletado com sucesso");
                 }
-                return NotFound("Aluno não encontrado");
+                return NotFound("Professor não encontrado");
             }
             catch (Exception e)
             {
@@ -54,8 +56,8 @@ namespace projetoIntegrador.Controllers
         {
             try
             {
-                var Alunos = await _service.GetAll();
-                return Ok(Alunos);
+                var Professores = await _service.GetAll();
+                return Ok(Professores);
             }
             catch (Exception e)
             {
@@ -68,14 +70,14 @@ namespace projetoIntegrador.Controllers
         {
             try
             {
-                var Aluno = await _service.GetById(id);
+                var Professor = await _service.GetById(id);
 
-                if(Aluno == null)
+                if (Professor == null)
                 {
-                    return NotFound("Aluno não econtrado");
+                    return NotFound("Professor não econtrado");
                 }
 
-                return Ok(Aluno);
+                return Ok(Professor);
             }
             catch (Exception e)
             {
@@ -84,17 +86,17 @@ namespace projetoIntegrador.Controllers
         }
 
         [HttpPut("Update")]
-        public async Task<IActionResult> Update(AlunoUpdateModel model)
+        public async Task<IActionResult> Update(ProfessorUpdateModel model)
         {
             try
             {
-                var Aluno = await _service.Update(model);
-                if(Aluno == null)
+                var Professor = await _service.Update(model);
+                if (Professor == null)
                 {
-                    return NotFound("Aluno não encontrado");
+                    return NotFound("Professor não encontrado");
                 }
 
-                return Ok(Aluno);
+                return Ok(Professor);
 
             }
             catch (Exception e)
@@ -102,6 +104,8 @@ namespace projetoIntegrador.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+
 
     }
 }
