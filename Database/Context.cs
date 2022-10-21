@@ -19,6 +19,7 @@ namespace projetoIntegrador.Database
         public DbSet<Aluno> Alunos { get; set; }
         public DbSet<Professor> Professores { get; set; }
         public DbSet<Materia> Materias { get; set; }
+        public DbSet<Sala> Salas { get; set; }
         protected override void OnModelCreating(ModelBuilder _builder) { }
     }
 }
