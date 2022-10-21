@@ -72,6 +72,7 @@ namespace projetoIntegrador.Services
             Professor.Nome = professor.Nome;
             Professor.CPF = professor.CPF;
             Professor.DataNascimento = professor.DataNascimento.ToUniversalTime();
+            Professor.Graduacao = professor.Graduacao;
             var prof = await _repository.Update(Professor);
             return prof;
         }
