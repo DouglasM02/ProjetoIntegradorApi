@@ -24,10 +24,12 @@ namespace projetoIntegrador
             //INTERFACE e REPOSITORY
             builder.Services.AddScoped<IAlunoRepository, AlunoRepository>();
             builder.Services.AddScoped<IProfessorRepository, ProfessorRepository>();
+            builder.Services.AddScoped<IMateriaRepository, MateriaRepository>();
 
             //INTERFACE e SERVICE
             builder.Services.AddScoped<IAlunoService, AlunoService>();
             builder.Services.AddScoped<IProfessorService, ProfessorService>();
+            builder.Services.AddScoped<IMateriaService, MateriaService>();
 
 
             builder.Services.AddControllers();
