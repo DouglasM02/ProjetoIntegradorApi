@@ -8,5 +8,6 @@
         public string CPF { get; set; }
         public string Graduacao { get; set; }
         public virtual Materia? Materia { get; set; }
+        public virtual Sala? Sala { get; set; }
     }
 }

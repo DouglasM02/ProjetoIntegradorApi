@@ -8,9 +8,11 @@ namespace projetoIntegrador.Services
     public class SalaService: ISalaService
     {
         private readonly ISalaRepository _repository;
-        public SalaService(ISalaRepository repository)
+        private readonly IProfessorService _professorService;
+        public SalaService(ISalaRepository repository, IProfessorService professorService)
         {
             _repository = repository;
+            _professorService = professorService;
         }
 
         public async Task<Sala> Create(SalaModel sala)
@@ -59,6 +61,13 @@ namespace projetoIntegrador.Services
 
         public async Task<Sala> Update(SalaUpdateModel sala)
         {
+            var professor = await _professorService.GetById(sala.ProfessorId.GetValueOrDefault());
+
+            if(professor == null)
+            {
+                sala.ProfessorId = null;
+            }
+
             var Sala = await _repository.GetById(sala.Id);
             if (Sala == null)
             {
@@ -67,6 +76,8 @@ namespace projetoIntegrador.Services
 
             Sala.Id = sala.Id;
             Sala.Codigo = sala.Codigo;
+            Sala.ProfessorId = sala.ProfessorId;
+            Sala.Professor = professor;
             var sal = await _repository.Update(Sala);
             return sal;
         }

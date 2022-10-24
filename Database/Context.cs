@@ -21,6 +21,13 @@ namespace projetoIntegrador.Database
             //relacionamentos
 
             _builder.Entity<Professor>()
+                .HasOne(professor => professor.Sala)
+                .WithOne(sala => sala.Professor)
+                .HasForeignKey<Sala>(sala => sala.ProfessorId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+
+            _builder.Entity<Professor>()
                 .HasOne(professor => professor.Materia)
                 .WithOne(materia => materia.Professor)
                 .HasForeignKey<Materia>(materia => materia.ProfessorId)
