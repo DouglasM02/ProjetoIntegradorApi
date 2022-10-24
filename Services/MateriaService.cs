@@ -9,9 +9,11 @@ namespace projetoIntegrador.Services
     public class MateriaService : IMateriaService
     {
         private readonly IMateriaRepository _repository;
-        public MateriaService(IMateriaRepository repository)
+        private readonly IProfessorService _professorService;
+        public MateriaService(IMateriaRepository repository, IProfessorService professorService)
         {
             _repository = repository;
+            _professorService = professorService;
         }
         public async Task<Entities.Materia> Create(MateriaModel materia)
         {
@@ -59,6 +61,13 @@ namespace projetoIntegrador.Services
 
         public async Task<Entities.Materia> Update(MateriaUpdateModel materia)
         {
+            var professor = await _professorService.GetById(materia.ProfessorId.GetValueOrDefault());
+
+            if(professor == null)
+            {
+                materia.ProfessorId = null;
+            }
+
             var Materia = await _repository.GetById(materia.Id);
             if (Materia == null)
             {
@@ -67,6 +76,8 @@ namespace projetoIntegrador.Services
 
             Materia.Id = materia.Id;
             Materia.Nome = materia.Nome;
+            Materia.ProfessorId = materia.ProfessorId;
+            Materia.Professor = professor;
             var mat = await _repository.Update(Materia);
             return mat;
         }

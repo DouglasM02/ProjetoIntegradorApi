@@ -7,5 +7,6 @@
         public DateTime DataNascimento { get; set; }
         public string CPF { get; set; }
         public string Graduacao { get; set; }
+        public virtual Materia? Materia { get; set; }
     }
 }
