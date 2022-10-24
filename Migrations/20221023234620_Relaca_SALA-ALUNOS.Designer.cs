@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using projetoIntegrador.Database;
@@ -11,9 +12,10 @@ using projetoIntegrador.Database;
 namespace projetoIntegrador.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20221023234620_Relaca_SALA-ALUNOS")]
+    partial class Relaca_SALAALUNOS
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -117,8 +119,7 @@ namespace projetoIntegrador.Migrations
                 {
                     b.HasOne("projetoIntegrador.Entities.Sala", "Sala")
                         .WithMany("Alunos")
-                        .HasForeignKey("SalaId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .HasForeignKey("SalaId");
 
                     b.Navigation("Sala");
                 });

@@ -8,9 +8,11 @@ namespace projetoIntegrador.Services
     public class AlunoService : IAlunoService
     {
         private readonly IAlunoRepository _repository;
-        public AlunoService(IAlunoRepository repository)
+        private readonly ISalaService _salaService;
+        public AlunoService(IAlunoRepository repository, ISalaService salaService)
         {
             _repository = repository;
+            _salaService = salaService;
         }
         public async Task<Aluno> Create(AlunoModel aluno)
         {
@@ -61,6 +63,13 @@ namespace projetoIntegrador.Services
 
         public async Task<Aluno> Update(AlunoUpdateModel aluno)
         {
+            var sala = await _salaService.GetById(aluno.SalaId.GetValueOrDefault());
+
+            if(sala == null)
+            {
+                aluno.SalaId = null;
+            }
+                
             var Aluno = await _repository.GetById(aluno.Id);
             if(Aluno == null)
             {
@@ -71,6 +80,8 @@ namespace projetoIntegrador.Services
             Aluno.Nome = aluno.Nome;
             Aluno.CPF = aluno.CPF;
             Aluno.DataNascimento = aluno.DataNascimento.ToUniversalTime();
+            Aluno.SalaId = aluno.SalaId;
+            Aluno.Sala = sala;
             var alun = await _repository.Update(Aluno);
             return alun;
         }

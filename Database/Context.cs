@@ -15,11 +15,23 @@ namespace projetoIntegrador.Database
             }
         }
 
+        protected override void OnModelCreating(ModelBuilder _builder)
+        {
+
+            //relacionamentos
+
+            _builder.Entity<Aluno>()
+                .HasOne(aluno => aluno.Sala)
+                .WithMany(sala => sala.Alunos)
+                .HasForeignKey(aluno => aluno.SalaId)
+                .OnDelete(DeleteBehavior.SetNull);
+        }
+
         // Dbsets
         public DbSet<Aluno> Alunos { get; set; }
         public DbSet<Professor> Professores { get; set; }
         public DbSet<Materia> Materias { get; set; }
         public DbSet<Sala> Salas { get; set; }
-        protected override void OnModelCreating(ModelBuilder _builder) { }
+        
     }
 }
