@@ -48,6 +48,12 @@ namespace projetoIntegrador
                 app.UseSwaggerUI();
             }
 
+            app.UseCors(x => x
+            .AllowAnyOrigin()
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            );
+
             app.UseHttpsRedirection();
             app.UseAuthorization();
             app.MapControllers();
