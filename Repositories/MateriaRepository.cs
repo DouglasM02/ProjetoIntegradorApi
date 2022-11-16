@@ -52,7 +52,9 @@ namespace projetoIntegrador.Repositories
 
         public async Task<List<Materia>> GetAll()
         {
-            return await _builder.Set<Materia>().ToListAsync();
+            return await _builder.Set<Materia>()
+                .Include(p => p.Professor)
+                .ToListAsync();
         }
 
         public async Task<Materia?> GetById(int id)
