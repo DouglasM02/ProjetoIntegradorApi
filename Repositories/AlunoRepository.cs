@@ -52,7 +52,7 @@ namespace projetoIntegrador.Repositories
 
         public async Task<List<Aluno>> GetAll()
         {
-                return await _builder.Set<Aluno>().ToListAsync();
+                return await _builder.Set<Aluno>().Include(a => a.Sala).ToListAsync();
         }
 
         public async Task<Aluno?> GetById(int id)
